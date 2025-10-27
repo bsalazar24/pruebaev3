@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Crear Producto{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-lg overflow-hidden">
+                <div class="card-header bg-gradient text-light text-center py-4">
+                    <h3 class="mb-0 fw-bold"style="color:black">Crear Producto</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="{% url 'Producto:crearProducto' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Itera sobre los campos del formulario -->
+                        {% for field in formulario %}
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}
+                            <div class="form-text">{{ field.help_text }}</div>
+                            {% endif %}
+                            {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+
+                        <button type="submit" class="btn btn-primary w-100 mt-3 btn-submit fw-bold">Crear Producto</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Gradiente en el header */
+.bg-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Card mejorada */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* Aplica Bootstrap a los inputs del form automáticamente */
+input, select, textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+input[type="file"] {
+    padding: 0.3rem;
+    background-color: transparent;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #667eea;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+    outline: none;
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-color: #f8f9fa;
+    padding-right: 2.5rem;
+}
+
+textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Botón mejorado */
+.btn-submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.form-label {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+</style>
+{% endblock %}

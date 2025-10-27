@@ -1,0 +1,154 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div class="login-container">
+    <div class="login-box">
+        <div class="logo-container">
+            <img src="{% static 'images/logologinVision.png' %}" alt="Vision Deportes Logo" class="login-logo" style="border-radius: 20%;">
+        </div>
+        <form method="post" action="{% url 'login' %}" class="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Usuario" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div>
+            <button type="submit" class="login-btn">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+
+<style>
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #000000 0%, #1e3c72 100%);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #007bff 0%, transparent 50%);
+    animation: rotate 20s linear infinite;
+    opacity: 0.1;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 50px rgba(0, 123, 255, 0.3),
+                0 0 20px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.login-box:hover {
+    transform: translateY(-5px);
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+}
+
+.login-logo {
+    max-width: 220px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.3));
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 16px;
+    background: rgba(240, 240, 240, 0.9);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    background: white;
+    outline: none;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.login-btn {
+    background: linear-gradient(45deg, #007bff, #00bfff);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.login-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.login-btn:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+    
+    .login-logo {
+        max-width: 180px;
+    }
+    
+    .form-group input {
+        padding: 12px 15px;
+    }
+}
+</style>
+{% endblock %}

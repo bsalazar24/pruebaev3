@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<!-- Carrusel compacto -->
+<div id="carouselInicio" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/banner1.jpg' %}" class="d-block w-100 carousel-img" alt="Banner 1">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/banner2.jpg' %}" class="d-block w-100 carousel-img" alt="Banner 2">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/banner3.jpg' %}" class="d-block w-100 carousel-img" alt="Banner 3">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselInicio" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselInicio" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
+<!-- Texto de bienvenida -->
+<div class="text-center mb-5">
+    <h1 class="fw-bold mb-3">Bienvenido a Vision Deportes</h1>
+    <p class="fs-5 mb-4">Tu tienda online de artículos deportivos de calidad.</p>
+    <a href="{% url 'Producto:listarProductos' %}" class="btn btn-lg btn-primary me-2">Ver Productos</a>
+    <a href="#contacto" class="btn btn-lg btn-outline-light">Contactar</a>
+
+</div>
+
+<!-- Categorías Destacadas -->
+<h2 class="text-center mt-5 mb-4">Categorías Destacadas</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card h-100">
+            <img src="{% static 'images/producto1.jpg' %}" class="card-img-top mx-auto mt-3" style="width:200px" alt="Balones">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Balones</h5>
+                <p class="card-text">Balones de fútbol, baloncesto y más.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="{% static 'images/producto2.jpg' %}" class="card-img-top mx-auto mt-3" style="width:200px" alt="Zapatillas">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Zapatillas</h5>
+                <p class="card-text">Cómodas y resistentes para entrenar.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="{% static 'images/producto3.jpg' %}" class="card-img-top mx-auto mt-3" style="width:200px" alt="Ropa Deportiva">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Ropa Deportiva</h5>
+                <p class="card-text">Poleras, shorts y más, ideales para cualquier actividad.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

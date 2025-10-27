@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Crear Categoría{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-light text-center">
+                    <h3 class="mb-0">Crear Categoría</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'Producto:crearCategoria' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="id_nombre" class="form-label fw-bold">Nombre</label>
+                            {{ formulario.nombre }}
+                            {% if formulario.nombre.errors %}
+                                <div class="text-danger small">{{ formulario.nombre.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label for="id_descripcion" class="form-label fw-bold">Descripción</label>
+                            {{ formulario.descripcion }}
+                            {% if formulario.descripcion.errors %}
+                                <div class="text-danger small">{{ formulario.descripcion.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Imagen -->
+                        <div class="mb-3">
+                            <label for="id_imagen" class="form-label fw-bold">Imagen</label>
+                            {{ formulario.imagen }}
+                            {% if formulario.imagen.errors %}
+                                <div class="text-danger small">{{ formulario.imagen.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Botón -->
+                        <button type="submit" class="btn btn-primary w-100 mt-3">Crear Categoría</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Aplica Bootstrap a los inputs del form manualmente */
+input, textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}
+
+input[type="file"] {
+    padding: 0.3rem;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,231 @@
+/* Variables de colores */
+:root {
+    --color-primary: #002D72;    /* Azul deportivo oscuro */
+    --color-secondary: #E31837;  /* Rojo energético */
+    --color-accent: #FFD700;     /* Dorado para detalles */
+    --color-light: #ffffff;      /* Blanco */
+    --color-dark: #1A1A1A;       /* Negro suave */
+    --color-gray: #f4f4f4;       /* Gris claro */
+}
+
+/* Estilos generales */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* NAVBAR FIXED - ESTO ES LO IMPORTANTE */
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--color-light) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* COLOR AMARILLO CUANDO ESTÁ ACTIVO */
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--color-accent) !important;
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-accent);
+}
+
+/* COLOR AMARILLO AL HACER HOVER */
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--color-accent) !important;
+}
+
+/* Asegurar que el activo se mantenga amarillo incluso al hacer hover */
+.navbar-dark .navbar-nav .nav-link.active:hover {
+    color: var(--color-accent) !important;
+}
+
+body {
+    background: #002D72;  /* fallback */
+    background-image: linear-gradient(135deg, #002D72 0%, #0047AB 25%, #1E4D8C 50%, #E31837 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-light);
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Navegación */
+.navbar {
+    background-color: var(--color-primary);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: var(--color-light) !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Resto de tus estilos... */
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--color-light);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.card img {
+    border-radius: 12px 12px 0 0;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+}
+
+/* Botones */
+.btn-primary {
+    background: var(--color-secondary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(227, 24, 55, 0.3);
+}
+
+/* Sección principal */
+.main-container {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+#carouselInicio {
+    max-height: 350px;       /* Altura total del carrusel */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+#carouselInicio .carousel-item img {
+    height: 350px;           /* Misma altura para todas las imágenes */
+    object-fit: cover;       /* Recorta la imagen sin deformar */
+    width: 100%;
+}
+/* AGREGAR ESTO A TU CSS ACTUAL */
+
+/* Contenedor de cards uniformes */
+.row-cols-md-3 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    display: flex;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--color-light);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Asegura que ocupe todo el ancho del col */
+}
+
+/* Imágenes de productos con altura fija */
+.card-img-top {
+    width: 100%;
+    height: 250px !important; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Recorta la imagen sin deformar */
+    border-radius: 12px 12px 0 0;
+}
+
+.card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Hace que el card-body ocupe el espacio disponible */
+}
+
+.card-text {
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Hace que la descripción ocupe el espacio disponible */
+}
+
+/* Botón siempre en la parte inferior */
+.btn-primary {
+    background: var(--color-secondary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Empuja el botón hacia la parte inferior */
+}
+
+/* Aplica Bootstrap a los inputs del form automáticamente */
+input, select, textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}
+
+input[type="file"] {
+    padding: 0.3rem;
+}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Categorías{% endblock %}
+
+<style>
+.card-img-fixed {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .card-img-fixed { height: 160px; }
+}
+</style>
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Categorias</h2>
+    <a href="{% url 'Producto:crearCategoria' %}" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-2"></i> Crear Categorias
+    </a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for categoria in categorias %}
+    <div class="col">
+        <div class="card h-100">
+            {% if categoria.imagen %}
+            <img src="{{ categoria.imagen.url }}" class="card-img-top card-img-fixed" alt="{{ categoria.nombre }}">
+            {% else %}
+            <img src="{% static 'images/sin_imagen_categoria.png' %}" class="card-img-top card-img-fixed" alt="{{ categoria.nombre }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ categoria.nombre }}</h5>
+                <p class="card-text">{{ categoria.descripcion }}</p>
+                <a href="{% url 'Producto:productos_porCategoria' categoria.slug %}" class="btn btn-primary w-100">Ver productos</a>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

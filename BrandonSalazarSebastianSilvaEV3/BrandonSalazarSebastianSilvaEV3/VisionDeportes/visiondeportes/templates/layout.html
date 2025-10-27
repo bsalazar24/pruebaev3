@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+      <div class="container">
+        <img src="{% static 'images/logoVision.jpg' %}" alt="Logo" class="navbar-logo mx-auto" style="height: 50px;" />
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">
+                        <i class="bi bi-house-fill"></i> Inicio
+                    </a>
+                </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'listarCategorias' %}active fw-bold text-primary{% endif %}" href="{% url 'Producto:listarCategorias' %}"><i class="bi bi-grid-fill me-2"></i> Categorías</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'listarProductos' %}active fw-bold text-primary{% endif %}" href="{% url 'Producto:listarProductos' %}"><i class="bi bi-bag-fill me-2"></i> Productos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'login' %}active fw-bold text-primary{% endif %}" href="{% url 'login' %}"><i class="bi bi-person-circle me-2"></i> Login</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'admin:index' %}active fw-bold text-primary{% endif %}" href="{% url 'admin:index' %}"><i class="bi bi-gear-fill me-2"></i> Administrador</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container main-container" style="min-height: 80vh;">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+
+    <footer id="contacto">
+      <div class="container text-center">
+        <h5>Contacto</h5>
+        <p>Email: contacto@visiondeportes.cl</p>
+        <p>Teléfono: +56 9 1234 5678</p>
+        <p>Dirección: Santiago, Chile</p>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
